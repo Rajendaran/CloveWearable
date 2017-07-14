@@ -1,0 +1,24 @@
+2017-07-14 11:52:55,839 [Worker-7] INFO  c.g.t.t.d.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.
+2017-07-14 11:54:36,791 [Worker-21] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.clovewearable.cove:CloveWearable:0.0.1-SNAPSHOT @ F:\Workspaces\KaHaCove\CloveWearable\pom.xml.
+2017-07-14 11:54:38,754 [Worker-21] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding source folder /CloveWearable/src/main/java
+2017-07-14 11:54:38,756 [Worker-21] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding resource folder /CloveWearable/src/main/resources
+2017-07-14 11:54:38,769 [Worker-21] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding resource folder /CloveWearable/src/main/resources
+2017-07-14 11:54:38,790 [Worker-21] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding source folder /CloveWearable/src/test/java
+2017-07-14 11:54:39,716 [Worker-21] INFO  o.e.m.c.i.p.ProjectConfigurationManager - Imported and configured 1 project(s) in 5 sec
+2017-07-14 11:54:39,719 [Worker-21] INFO  o.e.m.c.i.p.ProjectConfigurationManager - Update started
+2017-07-14 11:54:40,732 [Worker-21] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.clovewearable.cove:CloveWearable:0.0.1-SNAPSHOT @ F:\Workspaces\KaHaCove\CloveWearable\pom.xml.
+2017-07-14 11:54:41,778 [Worker-21] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding source folder /CloveWearable/src/main/java
+2017-07-14 11:54:41,778 [Worker-21] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding resource folder /CloveWearable/src/main/resources
+2017-07-14 11:54:41,779 [Worker-21] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding resource folder /CloveWearable/src/main/resources
+2017-07-14 11:54:41,780 [Worker-21] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding source folder /CloveWearable/src/test/java
+2017-07-14 11:54:42,159 [Worker-21] INFO  o.e.m.c.i.p.ProjectConfigurationManager - Update completed: 2 sec
+2017-07-14 11:54:43,491 [Worker-4] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2017-07-14 11:54:43,497 [Worker-4] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2017-07-14 11:54:43,511 [Worker-4] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2017-07-14 11:54:43,516 [Worker-4] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2017-07-14 11:54:43,516 [Worker-4] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Workspaces\KaHaCove\CloveWearable\src\test\resources
+2017-07-14 11:54:45,274 [Worker-8] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2017-07-14 11:54:45,276 [Worker-8] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2017-07-14 11:54:45,277 [Worker-8] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2017-07-14 11:54:45,279 [Worker-8] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2017-07-14 11:54:45,279 [Worker-8] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Workspaces\KaHaCove\CloveWearable\src\test\resources
