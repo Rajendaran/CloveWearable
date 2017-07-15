@@ -1,0 +1,9 @@
+package com.clovewearable.cove.constants;
+
+/**
+ * @author Rajendaran
+ *
+ */
+public interface ICoveConstant {
+
+}

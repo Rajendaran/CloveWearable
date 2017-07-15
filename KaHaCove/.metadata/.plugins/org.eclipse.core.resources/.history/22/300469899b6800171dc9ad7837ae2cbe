@@ -1,0 +1,29 @@
+package com.clovewearable.cove.dao.impl;
+
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.transaction.Transactional;
+
+import org.springframework.stereotype.Repository;
+
+import com.clovewearable.cove.dao.IUserDao;
+import com.clovewearable.cove.model.User;
+
+/**
+ * @author Rajendaran
+ *
+ */
+
+@Transactional
+@Repository
+public class UserDao implements IUserDao {
+
+	@PersistenceContext	
+	private EntityManager entityManager;
+	
+	@Override
+	public void createUser(User user) {
+		entityManager.persist(user);
+	}
+
+}

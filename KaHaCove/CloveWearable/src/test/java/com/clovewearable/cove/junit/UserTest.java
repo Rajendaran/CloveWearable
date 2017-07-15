@@ -22,16 +22,12 @@ public class UserTest {
 	private UserService userService;
 	
 	@Test
-	public void createUser() {
+	public void createUser() throws UserCustomException {
 		User user = new User();
 		user.setName("Rajendaran");
 		user.setEmail("rajendren@gmail.com");
 		user.setPincode("123456");
-		try {
-			userService.createUser(user);
-		} catch (UserCustomException e) {
-			e.printStackTrace();
-		}
-		assertTrue(user != null);
+		Integer count = userService.createUser(user);
+		assertTrue(0 == count);
 	}
 }

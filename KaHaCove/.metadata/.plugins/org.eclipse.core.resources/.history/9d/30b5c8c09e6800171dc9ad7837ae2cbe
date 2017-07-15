@@ -1,0 +1,16 @@
+/**
+ * 
+ */
+package com.clovewearable.cove.exception;
+
+/**
+ * @author Rajendaran
+ *
+ */
+public class UserCustomException extends Exception {
+	
+	public UserCustomException(String message) {
+        super(message);
+    }
+
+}

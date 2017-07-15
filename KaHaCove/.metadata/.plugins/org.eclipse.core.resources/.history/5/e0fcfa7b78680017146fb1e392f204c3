@@ -1,0 +1,12 @@
+/**
+ * 
+ */
+package com.clovewearable.cove.model;
+
+/**
+ * @author Rajendaran
+ * User Entity
+ */
+public class User {
+
+}

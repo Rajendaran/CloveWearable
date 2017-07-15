@@ -10,5 +10,7 @@ import com.clovewearable.cove.model.User;
 public interface IUserDao {
 	
 	public Integer createUser(User user) throws UserCustomException;
+	
+	public Integer loginUser(Integer userId) throws UserCustomException;
 
 }

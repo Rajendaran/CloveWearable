@@ -1,0 +1,12 @@
+/**
+ * 
+ */
+package com.clovewearable.cove.dao.impl;
+
+/**
+ * @author SONY
+ *
+ */
+public class UserDaoImpl {
+
+}

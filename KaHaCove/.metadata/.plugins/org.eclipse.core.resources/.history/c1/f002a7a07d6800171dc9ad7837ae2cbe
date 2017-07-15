@@ -1,0 +1,17 @@
+package com.clovewearable.cove.service.impl;
+
+import com.clovewearable.cove.model.User;
+import com.clovewearable.cove.service.IUserService;
+
+/**
+ * @author Rajendaran
+ *
+ */
+public class UserService implements IUserService {
+
+	@Override
+	public void createUser(User user) {
+		
+	}
+
+}

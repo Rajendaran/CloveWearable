@@ -1,0 +1,9 @@
+package com.clovewearable.cove.email.service;
+
+/**
+ * @author Rajendaran
+ *
+ */
+public class EmailService {
+
+}

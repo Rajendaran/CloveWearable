@@ -1,0 +1,12 @@
+/**
+ * 
+ */
+package com.clovewearable.cove.rest.client;
+
+/**
+ * @author SONY
+ *
+ */
+public class RestClientTest {
+
+}

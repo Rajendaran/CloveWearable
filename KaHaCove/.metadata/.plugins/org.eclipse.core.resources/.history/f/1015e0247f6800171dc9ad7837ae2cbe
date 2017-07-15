@@ -1,0 +1,9 @@
+package com.clovewearable.cove.junit;
+
+/**
+ * @author Rajendaran
+ *
+ */
+public class UserTest {
+
+}

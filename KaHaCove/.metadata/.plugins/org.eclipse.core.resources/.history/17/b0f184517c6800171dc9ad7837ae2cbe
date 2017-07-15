@@ -1,0 +1,12 @@
+/**
+ * 
+ */
+package com.clovewearable.cove.dao;
+
+/**
+ * @author Rajendaran
+ *
+ */
+public interface IUserDao {
+
+}

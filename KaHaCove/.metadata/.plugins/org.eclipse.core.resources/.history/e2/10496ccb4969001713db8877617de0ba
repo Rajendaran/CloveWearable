@@ -1,0 +1,13 @@
+spring.datasource.url = jdbc:mysql://localhost:3306/clovewearable
+spring.datasource.username = root
+spring.datasource.password = root
+
+spring.jpa.properties.hibernate.dialect = org.hibernate.dialect.MySQLDialect
+spring.jpa.properties.hibernate.id.new_generator_mappings = false
+spring.jpa.properties.hibernate.format_sql = true
+
+email.mailgun.apiKey=key-629bc597fd375b33f3c18d0fb282b0d4
+email.mailgun.host=postmaster@sandbox95ef7bfe8ba64693a6838b2518a6b9ee.mailgun.org
+email.mailgun.baseurl=https://api.mailgun.net/v3/sandbox95ef7bfe8ba64693a6838b2518a6b9ee.mailgun.org
+email.mailgun.sender=rajendren@gmail.com
+

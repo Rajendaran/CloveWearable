@@ -1,0 +1,14 @@
+/**
+ * 
+ */
+package com.clovewearable.cove.dao;
+
+/**
+ * @author Rajendaran
+ *
+ */
+public interface IUserDao {
+	
+	public void createUser(User user);
+
+}

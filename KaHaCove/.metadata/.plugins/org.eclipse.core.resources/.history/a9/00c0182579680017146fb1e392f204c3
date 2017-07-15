@@ -1,0 +1,19 @@
+package com.clovewearable.cove.model;
+
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+/**
+ * @author Rajendaran
+ * User Entity
+ */
+
+@Entity
+@Table(name="users")
+public class User {
+	
+	private String name;
+	private String email;
+	private String pincode;
+
+}

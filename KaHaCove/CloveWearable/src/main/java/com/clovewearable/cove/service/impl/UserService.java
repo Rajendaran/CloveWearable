@@ -4,6 +4,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.clovewearable.cove.constants.ICoveConstant;
 import com.clovewearable.cove.dao.IUserDao;
 import com.clovewearable.cove.exception.UserCustomException;
 import com.clovewearable.cove.model.User;
@@ -22,10 +23,28 @@ public class UserService implements IUserService {
 
 	private static final org.slf4j.Logger logger = LoggerFactory.getLogger(UserService.class);
 	
+	/* (non-Javadoc)
+	 * @see com.clovewearable.cove.service.IUserService#createUser(com.clovewearable.cove.model.User)
+	 * @param User entity
+	 * @return total record size
+	 * @throws UserCustomException
+	 */
 	@Override
 	public Integer createUser(User user) throws UserCustomException {
-		logger.info("Begins UserService => createUser method");
+		logger.info(ICoveConstant.BEGINS_USER_SERVICE_CREATEUSER_METHOD);
 		return userDao.createUser(user);
+	}
+
+	/* (non-Javadoc)
+	 * @see com.clovewearable.cove.service.IUserService#loginUser(java.lang.Integer)
+	 * @param userId
+	 * @return total record size
+	 * @throws UserCustomException
+	 */
+	@Override
+	public Integer loginUser(Integer userId) throws UserCustomException {
+		logger.info(ICoveConstant.BEGINS_USER_SERVICE_LOGINUSER_METHOD);
+		return userDao.loginUser(userId);
 	}
 
 }

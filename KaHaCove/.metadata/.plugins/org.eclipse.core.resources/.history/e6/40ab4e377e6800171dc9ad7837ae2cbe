@@ -1,0 +1,24 @@
+package com.clovewearable.cove.service.impl;
+
+import org.springframework.stereotype.Service;
+
+import com.clovewearable.cove.dao.IUserDao;
+import com.clovewearable.cove.model.User;
+import com.clovewearable.cove.service.IUserService;
+
+/**
+ * @author Rajendaran
+ *
+ */
+
+@Service
+public class UserService implements IUserService {
+	
+	private IUserDao userDao;
+
+	@Override
+	public void createUser(User user) {
+		
+	}
+
+}

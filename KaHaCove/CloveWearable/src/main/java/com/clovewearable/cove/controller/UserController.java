@@ -4,11 +4,15 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.clovewearable.cove.constants.ICoveConstant;
+import com.clovewearable.cove.email.service.EmailService;
 import com.clovewearable.cove.exception.UserCustomException;
+import com.clovewearable.cove.model.Email;
 import com.clovewearable.cove.model.User;
 import com.clovewearable.cove.service.IUserService;
 
@@ -24,15 +28,18 @@ public class UserController {
 	@Autowired
 	private IUserService userService;
 	
+	@Autowired
+	private EmailService emailService;
+	
 	private static final org.slf4j.Logger logger = LoggerFactory.getLogger(UserController.class);
 	
-	@RequestMapping(value = "/createuser")
-	public ResponseEntity<String> createUser() {
-		logger.info("Begins UserController => createUser method");
-		User user = new User();
-		user.setName("Rajendaransss");
-		user.setEmail("rajendrena@gmail.com");
-		user.setPincode("123456");
+	/**
+	 * @param User entity
+	 * @return success or failure message
+	 */
+	@RequestMapping(value = "/createUser")
+	public ResponseEntity<String> createUser(@RequestBody User user) {
+		logger.info(ICoveConstant.BEGINS_USER_CONTROLLER_CREATEUSER_METHOD);
 		Integer count = 0;
 		try {
 			count = userService.createUser(user);
@@ -41,10 +48,31 @@ public class UserController {
 			logger.error(e.getMessage());
 		}
 		if (0 == count) {
-			return new ResponseEntity<String>(ICoveConstant.USER_REGISTRATION_SUCCESS, HttpStatus.OK);
+			return new ResponseEntity<String>(ICoveConstant.USER_REGISTRATION_SUCCESS, HttpStatus.CREATED);
 		}
 		return new ResponseEntity<String>(ICoveConstant.USER_ALREADY_EXIST, HttpStatus.CONFLICT);
 		
+	}
+	
+	/**
+	 * @param userId
+	 * @return success or failure message
+	 */
+	@RequestMapping(value = "/loginUser")
+	public ResponseEntity<String> loginUser(@RequestParam("id") Integer userId, @RequestBody Email email) {
+		logger.info(ICoveConstant.BEGINS_USER_CONTROLLER_LOGINUSER_METHOD);
+		Integer count = 0;
+		try {
+			count = userService.loginUser(userId);
+			
+		} catch (UserCustomException e) {
+			logger.error(e.getMessage());
+		}
+		if (0 != count) {
+			emailService.send(email);
+			return new ResponseEntity<String>(ICoveConstant.USER_FOUND, HttpStatus.FOUND);
+		}
+		return new ResponseEntity<String>(ICoveConstant.USER_DOES_NOT_FOUND, HttpStatus.NOT_FOUND);
 	}
 
 }

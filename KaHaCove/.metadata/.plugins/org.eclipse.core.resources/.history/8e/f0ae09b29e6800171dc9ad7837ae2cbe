@@ -1,0 +1,12 @@
+/**
+ * 
+ */
+package com.clovewearable.cove.exception;
+
+/**
+ * @author Rajendaran
+ *
+ */
+public class UserCustomException {
+
+}

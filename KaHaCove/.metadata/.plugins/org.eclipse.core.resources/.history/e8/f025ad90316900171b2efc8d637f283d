@@ -1,0 +1,62 @@
+package com.clovewearable.cove.dao.impl;
+
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.transaction.Transactional;
+
+import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Repository;
+
+import com.clovewearable.cove.constants.ICoveConstant;
+import com.clovewearable.cove.dao.IUserDao;
+import com.clovewearable.cove.exception.UserCustomException;
+import com.clovewearable.cove.model.User;
+
+/**
+ * @author Rajendaran
+ *
+ */
+
+@Transactional
+@Repository
+public class UserDao implements IUserDao {
+
+	@PersistenceContext	
+	private EntityManager entityManager;
+	
+	private static final org.slf4j.Logger logger = LoggerFactory.getLogger(UserDao.class);
+	
+	/* (non-Javadoc)
+	 * @see com.clovewearable.cove.dao.IUserDao#createUser(com.clovewearable.cove.model.User)
+	 * @param User entity
+	 * @return record size
+	 * @throws UserCustomException
+	 */
+	@Override
+	public Integer createUser(User user) throws UserCustomException {
+		logger.info("-----------Begins UserDao => createUser method---------------");
+		String hql = ICoveConstant.USER_EXIST_CHECK_QUERY;
+		Integer count = entityManager.createQuery(hql).setParameter(1, user.getEmail()).getResultList().size();
+		if (0 == count) {
+			entityManager.merge(user);
+			logger.info(ICoveConstant.USER_REGISTRATION_SUCCESS);
+		} else {
+			logger.info(ICoveConstant.USER_ALREADY_EXIST);
+		}
+		return count;
+	}
+
+	@Override
+	public Integer loginUser(Integer userId) throws UserCustomException {
+		logger.info("------------Begins UserDao => loginUser method---------------");
+		String hql = ICoveConstant.USER_LOGIN_QUERY;
+		Integer count = entityManager.createQuery(hql).setParameter(1, userId).getResultList().size();
+		if (0 == count) {
+			logger.info(ICoveConstant.USER_DOES_NOT_FOUND);
+		} else {
+			logger.info(ICoveConstant.USER_FOUND);
+		}
+		return null;
+	}
+		
+}

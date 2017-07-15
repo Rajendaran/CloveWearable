@@ -1,0 +1,36 @@
+package com.clovewearable.cove.dao.impl;
+
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.transaction.Transactional;
+
+import org.springframework.stereotype.Repository;
+
+import com.clovewearable.cove.constants.ICoveConstant;
+import com.clovewearable.cove.dao.IUserDao;
+import com.clovewearable.cove.exception.UserCustomException;
+import com.clovewearable.cove.model.User;
+
+/**
+ * @author Rajendaran
+ *
+ */
+
+@Transactional
+@Repository
+public class UserDao implements IUserDao {
+
+	@PersistenceContext	
+	private EntityManager entityManager;
+	
+	@Override
+	public Integer createUser(User user) throws UserCustomException {
+		String hql = ICoveConstant.USER_EXIST_CHECK_QUERY;
+		int count = entityManager.createQuery(hql).setParameter(1, user.getEmail()).getResultList().size();
+		if (0 == count) {
+			System.out.println("DAO 0");
+			entityManager.merge(user);
+		}
+	}
+
+}

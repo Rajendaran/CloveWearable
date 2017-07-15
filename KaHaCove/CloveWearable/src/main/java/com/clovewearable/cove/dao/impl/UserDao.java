@@ -26,9 +26,15 @@ public class UserDao implements IUserDao {
 	
 	private static final org.slf4j.Logger logger = LoggerFactory.getLogger(UserDao.class);
 	
+	/* (non-Javadoc)
+	 * @see com.clovewearable.cove.dao.IUserDao#createUser(com.clovewearable.cove.model.User)
+	 * @param User entity
+	 * @return total record size
+	 * @throws UserCustomException
+	 */
 	@Override
 	public Integer createUser(User user) throws UserCustomException {
-		logger.info("Begins UserDao => createUser method");
+		logger.info(ICoveConstant.BEGINS_USER_DAO_CREATEUSER_METHOD);
 		String hql = ICoveConstant.USER_EXIST_CHECK_QUERY;
 		Integer count = entityManager.createQuery(hql).setParameter(1, user.getEmail()).getResultList().size();
 		if (0 == count) {
@@ -40,4 +46,23 @@ public class UserDao implements IUserDao {
 		return count;
 	}
 
+	/* (non-Javadoc)
+	 * @see com.clovewearable.cove.dao.IUserDao#loginUser(java.lang.Integer)
+	 * @param userId
+	 * @return total record size
+	 * @throws UserCustomException
+	 */
+	@Override
+	public Integer loginUser(Integer userId) throws UserCustomException {
+		logger.info(ICoveConstant.BEGINS_USER_DAO_LOGINUSER_METHOD);
+		String hql = ICoveConstant.USER_LOGIN_QUERY;
+		Integer count = entityManager.createQuery(hql).setParameter(1, userId).getResultList().size();
+		if (0 == count) {
+			logger.info(ICoveConstant.USER_DOES_NOT_FOUND);
+		} else {
+			logger.info(ICoveConstant.USER_FOUND);
+		}
+		return count;
+	}
+		
 }

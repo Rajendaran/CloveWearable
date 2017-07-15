@@ -1,0 +1,20 @@
+package com.clovewearable.cove.dao.impl;
+
+import com.clovewearable.cove.dao.UserDao;
+import com.clovewearable.cove.model.User;
+
+/**
+ * @author Rajendaran
+ *
+ */
+
+
+public class UserDaoImpl implements UserDao {
+
+	@Override
+	public void createUser(User user) {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

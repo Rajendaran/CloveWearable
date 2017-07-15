@@ -1,0 +1,12 @@
+/**
+ * 
+ */
+package com.clovewearable.cove.email.service;
+
+/**
+ * @author SONY
+ *
+ */
+public class EmailService {
+
+}
