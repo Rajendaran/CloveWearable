@@ -1,6 +1,4 @@
-package com.clovewearable.cove.service;
-
-import java.util.List;
+package com.clovewearable.cove.dao;
 
 import com.clovewearable.cove.exception.UserCustomException;
 import com.clovewearable.cove.model.User;
@@ -9,9 +7,10 @@ import com.clovewearable.cove.model.User;
  * @author Rajendaran
  *
  */
-public interface IUserService {
-
+public interface IUserDao {
+	
 	public Integer createUser(User user) throws UserCustomException;
 	
-	public List<User> loginUser(Integer userId) throws UserCustomException;
+	public Integer loginUser(Integer userId) throws UserCustomException;
+
 }

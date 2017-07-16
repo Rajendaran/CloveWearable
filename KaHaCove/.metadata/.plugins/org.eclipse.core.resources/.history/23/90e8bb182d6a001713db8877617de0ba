@@ -56,10 +56,11 @@ public class UserDao implements IUserDao {
 	 */
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<User> loginUser(Integer userId) throws UserCustomException {
+	public Integer loginUser(Integer userId) throws UserCustomException {
 		logger.info(ICoveConstant.BEGINS_USER_DAO_LOGINUSER_METHOD);
 		String hql = ICoveConstant.USER_LOGIN_QUERY;
-		return entityManager.createQuery(hql).setParameter(1, userId).getResultList();
+		List<User> userList = entityManager.createQuery(hql).setParameter(1, userId).getResultList();
+		return count;
 	}
 		
 }

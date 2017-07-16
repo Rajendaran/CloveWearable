@@ -18,6 +18,8 @@ import com.clovewearable.cove.model.Email;
 import com.clovewearable.cove.model.User;
 import com.clovewearable.cove.service.IUserService;
 
+import jnr.ffi.types.size_t;
+
 /**
  * @author Rajendaran
  *
@@ -64,7 +66,6 @@ public class UserController {
 	public ResponseEntity<User> loginUser(@RequestParam("id") Integer userId) {
 		logger.info(ICoveConstant.BEGINS_USER_CONTROLLER_LOGINUSER_METHOD);
 		List<User> userList = null;
-		User user = null;
 		try {
 			userList = userService.loginUser(userId);
 			
@@ -72,15 +73,16 @@ public class UserController {
 			logger.error(e.getMessage());
 		}
 		
-		for (User userObj : userList) {
-			user = userObj;
+		for (User user : userList) {
+			if (0 != userList.size()) {
+				Email email = new Email("rajendren@gmail.com","rajendren@gmail.com","Test Mail","Hello");
+				emailService.send(email);
+				return new ResponseEntity<User>(user, HttpStatus.FOUND);
+			}
+			return new ResponseEntity<User>(user, HttpStatus.NOT_FOUND);
 		}
-		if (0 != userList.size()) {
-			Email email = new Email("rajendren@gmail.com","rajendren@gmail.com","Test Mail","Hello");
-			emailService.send(email);
-			return new ResponseEntity<User>(user, HttpStatus.FOUND);
-		}
-		return new ResponseEntity<User>(user, HttpStatus.NOT_FOUND);
+		
+		
 	}
 
 }

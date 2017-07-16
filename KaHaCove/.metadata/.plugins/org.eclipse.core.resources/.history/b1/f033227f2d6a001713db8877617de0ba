@@ -63,24 +63,19 @@ public class UserController {
 	@RequestMapping(value = "/loginUser")
 	public ResponseEntity<User> loginUser(@RequestParam("id") Integer userId) {
 		logger.info(ICoveConstant.BEGINS_USER_CONTROLLER_LOGINUSER_METHOD);
-		List<User> userList = null;
-		User user = null;
+		Integer count = 0;
 		try {
-			userList = userService.loginUser(userId);
+			List<User> userList = userService.loginUser(userId);
 			
 		} catch (UserCustomException e) {
 			logger.error(e.getMessage());
 		}
-		
-		for (User userObj : userList) {
-			user = userObj;
-		}
-		if (0 != userList.size()) {
+		if (0 != count) {
 			Email email = new Email("rajendren@gmail.com","rajendren@gmail.com","Test Mail","Hello");
 			emailService.send(email);
-			return new ResponseEntity<User>(user, HttpStatus.FOUND);
+			return new ResponseEntity<String>(ICoveConstant.USER_FOUND, HttpStatus.FOUND);
 		}
-		return new ResponseEntity<User>(user, HttpStatus.NOT_FOUND);
+		return new ResponseEntity<String>(ICoveConstant.USER_DOES_NOT_FOUND, HttpStatus.NOT_FOUND);
 	}
 
 }

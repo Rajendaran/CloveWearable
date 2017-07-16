@@ -18,6 +18,8 @@ import com.clovewearable.cove.model.Email;
 import com.clovewearable.cove.model.User;
 import com.clovewearable.cove.service.IUserService;
 
+import jnr.ffi.types.size_t;
+
 /**
  * @author Rajendaran
  *

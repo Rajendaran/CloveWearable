@@ -1,7 +1,5 @@
 package com.clovewearable.cove.service.impl;
 
-import java.util.List;
-
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -44,7 +42,7 @@ public class UserService implements IUserService {
 	 * @throws UserCustomException
 	 */
 	@Override
-	public List<User> loginUser(Integer userId) throws UserCustomException {
+	public Integer loginUser(Integer userId) throws UserCustomException {
 		logger.info(ICoveConstant.BEGINS_USER_SERVICE_LOGINUSER_METHOD);
 		return userDao.loginUser(userId);
 	}
