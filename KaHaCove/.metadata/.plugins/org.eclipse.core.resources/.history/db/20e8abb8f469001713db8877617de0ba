@@ -1,0 +1,9 @@
+package com.clovewearable.cove.service.impl;
+
+/**
+ * @author Rajendaran
+ *
+ */
+public class OpenWeatherMapService {
+
+}

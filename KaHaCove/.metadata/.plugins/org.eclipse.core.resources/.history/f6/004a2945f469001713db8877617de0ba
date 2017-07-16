@@ -1,0 +1,13 @@
+package com.clovewearable.cove.dao;
+
+import com.clovewearable.cove.exception.OpenWeatherMapCustomException;
+
+/**
+ * @author Rajendaran
+ *
+ */
+public interface IOpenWeatherMapDao {
+	
+	public Double getTemperatureByPincode() throws OpenWeatherMapCustomException;
+
+}

@@ -1,0 +1,94 @@
+package com.clovewearable.cove.service.impl;
+
+import java.util.List;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.clovewearable.cove.constants.ICoveConstant;
+import com.clovewearable.cove.dao.impl.OpenWeatherMapDao;
+import com.clovewearable.cove.exception.OpenWeatherMapCustomException;
+import com.clovewearable.cove.model.Temperature;
+import com.clovewearable.cove.service.IOpenWeatherMapService;
+import com.clovewearable.cove.util.OpenWeatherMapUtil;
+
+/**
+ * @author Rajendaran
+ *
+ */
+
+@Service
+public class OpenWeatherMapService implements IOpenWeatherMapService {
+	
+	private static final org.slf4j.Logger logger = LoggerFactory.getLogger(OpenWeatherMapService.class);
+	
+	@Autowired
+	OpenWeatherMapDao openWeatherMapDao;
+	
+	@Autowired
+	OpenWeatherMapUtil openWeatherMapUtil;
+
+	/* (non-Javadoc)
+	 * @see com.clovewearable.cove.service.IOpenWeatherMapService#getTemperatureByPincode(com.clovewearable.cove.model.Temperature)
+	 * @param temperature entity
+	 * @return current temperature
+	 * @throws OpenWeatherMapCustomException
+	 */
+	@Override
+	public Double getTemperatureByPincode(Temperature temperature) throws OpenWeatherMapCustomException {
+		logger.info(ICoveConstant.BEGINS_OWM_SERVICE_GETTEMPBYPINCODE_METHOD);
+		return openWeatherMapDao.getTemperatureByPincode(temperature);
+	}
+
+	/* (non-Javadoc)
+	 * @see com.clovewearable.cove.service.IOpenWeatherMapService#updateTemperatureByEveryMinute(com.clovewearable.cove.model.Temperature)
+	 * @param temperature entity
+	 * @throws OpenWeatherMapCustomException
+	 */
+	@Override
+	public void updateTemperatureByEveryMinute(Temperature temperature) throws OpenWeatherMapCustomException {
+		logger.info(ICoveConstant.BEGINS_OWM_SERVICE_UPDATETEMP_EVERY_MINUTE_METHOD);
+		openWeatherMapDao.updateTemperatureByEveryMinute(temperature);
+		
+	}
+
+	/* (non-Javadoc)
+	 * @see com.clovewearable.cove.service.IOpenWeatherMapService#getCurrentTemperature(java.lang.String, java.lang.String)
+	 * @param pincode, country
+	 * @return temperature entity
+	 * @throws OpenWeatherMapCustomException
+	 */
+	@Override
+	public Temperature getCurrentTemperature(String pincode, String country) throws OpenWeatherMapCustomException {
+		String owpPincodeUrl = ICoveConstant.OPENWEATHERMAP_URL_BY_PINCODE+pincode+","+country+ICoveConstant.OPENWEATHERMAP_API_KEY1;
+		Double temp = null;
+		JSONObject weatherByPincodeObj = openWeatherMapUtil.getOpenWeatherMapData(owpPincodeUrl);
+		try {
+			JSONObject tempratureObj = weatherByPincodeObj.getJSONObject("main");
+			temp = tempratureObj.getDouble("temp");
+		} catch (JSONException e) {
+			logger.error(ICoveConstant.ERROR_WHILE_PARSING_JSON_DATA + "\n" + e.getMessage());
+		}
+		logger.info(ICoveConstant.OWM_CURRENT_TEMP + temp);
+		Temperature temperature = new Temperature();
+		temperature.setPincode(pincode);
+		temperature.setCurrentTemp(temp);
+		temperature.setCountry(country);
+		return temperature;
+	}
+
+	/* (non-Javadoc)
+	 * @see com.clovewearable.cove.service.IOpenWeatherMapService#getAllTemperature()
+	 * @return temperature list
+	 * @throws OpenWeatherMapCustomException
+	 */
+	@Override
+	public List<Temperature> getAllTemperature() throws OpenWeatherMapCustomException {
+		logger.info(ICoveConstant.BEGINS_OWM_SERVICE_GETALLTEMP_METHOD);
+		return openWeatherMapDao.getAllTemperature();
+	}
+
+}

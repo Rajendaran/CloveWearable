@@ -1,0 +1,52 @@
+package com.clovewearable.cove.controller;
+
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.net.URI;
+import java.net.URL;
+
+import org.slf4j.LoggerFactory;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.RestTemplate;
+
+import com.clovewearable.cove.constants.ICoveConstant;
+import com.clovewearable.cove.model.User;
+
+/**
+ * @author Rajendaran
+ *
+ */
+
+@RestController
+@RequestMapping(value = "/openweathermap")
+public class OpenWeatherMapController {
+	
+	private static final org.slf4j.Logger logger = LoggerFactory.getLogger(OpenWeatherMapController.class);
+	
+	@RequestMapping(value = "/getWeatherByZipCode")
+	public ResponseEntity<String> getWeatherByZipCode(@RequestParam("zipCode") String zipCode, @RequestParam("country") String country) {
+		//logger.info(ICoveConstant.BEGINS_USER_CONTROLLER_CREATEUSER_METHOD);
+		String urlStr = ICoveConstant.OPENWEATHERMAP_URL_BY_ZIPCODE+zipCode+","+country+ICoveConstant.OPENWEATHERMAP_API_KEY1;
+		try {
+			URL url = new URL(urlStr);
+			BufferedReader br = new BufferedReader(new InputStreamReader(url.openStream()));
+			String strTemp = "";
+			while (null != (strTemp = br.readLine())) {
+				System.out.println(strTemp);
+			}
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		}
+		
+		return null;
+	}
+
+}

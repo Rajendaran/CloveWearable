@@ -1,0 +1,18 @@
+/**
+ * 
+ */
+package com.clovewearable.cove.model;
+
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+/**
+ * @author Rajendaran
+ *
+ */
+
+@Entity
+@Table(name = "temperature")
+public class Temperature {
+
+}

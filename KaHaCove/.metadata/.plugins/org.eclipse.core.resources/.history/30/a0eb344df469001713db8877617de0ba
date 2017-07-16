@@ -1,0 +1,45 @@
+package com.clovewearable.cove.dao.impl;
+
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+
+import org.slf4j.LoggerFactory;
+
+import com.clovewearable.cove.constants.ICoveConstant;
+import com.clovewearable.cove.dao.IOpenWeatherMapDao;
+import com.clovewearable.cove.exception.OpenWeatherMapCustomException;
+import com.clovewearable.cove.model.Temperature;
+
+/**
+ * @author Rajendaran
+ *
+ */
+public class OpenWeatherMapDao implements IOpenWeatherMapDao {
+	
+	@PersistenceContext	
+	private EntityManager entityManager;
+	
+	private static final org.slf4j.Logger logger = LoggerFactory.getLogger(OpenWeatherMapDao.class);
+
+	@Override
+	public Double getTemperatureByPincode() throws OpenWeatherMapCustomException {
+		logger.info(ICoveConstant.BEGINS_OWM_DAO_GETTEMPBYPINCODE_METHOD);
+		String hql = ICoveConstant.GET_TEMP_QUERY;
+		
+		String pincode = "12345";
+		Double temp = 60.0;
+		Temperature temperature = (Temperature) entityManager.createQuery(hql).setParameter(1, pincode).getResultList();
+		if(null == temperature) {
+			temperature.setPincode(pincode);
+			temperature.setCurrentTemp(temp);
+			entityManager.merge(temperature);
+		}/* else if (less than 30 secs old) {
+			temperature.getCurrentTemp();
+		} else {
+			update temp and return same value
+		}*/
+		System.out.print(temperature.getCurrentTemp());
+		return temperature.getCurrentTemp();
+	}
+
+}

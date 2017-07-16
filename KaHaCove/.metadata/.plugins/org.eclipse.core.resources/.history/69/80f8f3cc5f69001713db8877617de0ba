@@ -1,0 +1,12 @@
+/**
+ * 
+ */
+package com.clovewearable.cove.controller;
+
+/**
+ * @author SONY
+ *
+ */
+public class OpenWeatherMapController {
+
+}

@@ -1,0 +1,9 @@
+package com.clovewearable.cove.service;
+
+/**
+ * @author Rajendaran
+ *
+ */
+public interface IOpenWeatherMapService {
+
+}

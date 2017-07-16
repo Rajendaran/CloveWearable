@@ -1,0 +1,12 @@
+/**
+ * 
+ */
+package com.clovewearable.cove.exception;
+
+/**
+ * @author SONY
+ *
+ */
+public class OpenWeatherMapCustomException {
+
+}

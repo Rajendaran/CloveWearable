@@ -1,0 +1,20 @@
+package com.clovewearable.cove.dao.impl;
+
+import com.clovewearable.cove.dao.IOpenWeatherMapDao;
+import com.clovewearable.cove.exception.OpenWeatherMapCustomException;
+
+/**
+ * @author Rajendaran
+ *
+ */
+public class OpenWeatherMapDao implements IOpenWeatherMapDao {
+
+	@Override
+	public Double saveTemperatureByPincode() throws OpenWeatherMapCustomException {
+		String pincode = "12345";
+		Double temp = 60.0;
+		
+		return null;
+	}
+
+}

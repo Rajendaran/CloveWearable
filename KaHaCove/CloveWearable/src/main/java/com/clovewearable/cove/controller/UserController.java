@@ -59,7 +59,7 @@ public class UserController {
 	 * @return success or failure message
 	 */
 	@RequestMapping(value = "/loginUser")
-	public ResponseEntity<String> loginUser(@RequestParam("id") Integer userId, @RequestBody Email email) {
+	public ResponseEntity<String> loginUser(@RequestParam("id") Integer userId) {
 		logger.info(ICoveConstant.BEGINS_USER_CONTROLLER_LOGINUSER_METHOD);
 		Integer count = 0;
 		try {
@@ -69,6 +69,7 @@ public class UserController {
 			logger.error(e.getMessage());
 		}
 		if (0 != count) {
+			Email email = new Email("rajendren@gmail.com","rajendren@gmail.com","Test Mail","Hello");
 			emailService.send(email);
 			return new ResponseEntity<String>(ICoveConstant.USER_FOUND, HttpStatus.FOUND);
 		}

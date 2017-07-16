@@ -1,0 +1,9 @@
+package com.clovewearable.cove.dao.impl;
+
+/**
+ * @author Rajendaran
+ *
+ */
+public class OpenWeatherMapDao {
+
+}

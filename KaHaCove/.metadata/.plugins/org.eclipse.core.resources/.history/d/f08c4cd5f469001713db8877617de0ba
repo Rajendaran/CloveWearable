@@ -1,0 +1,18 @@
+package com.clovewearable.cove.service.impl;
+
+import com.clovewearable.cove.exception.OpenWeatherMapCustomException;
+import com.clovewearable.cove.model.Temperature;
+import com.clovewearable.cove.service.IOpenWeatherMapService;
+
+/**
+ * @author Rajendaran
+ *
+ */
+public class OpenWeatherMapService implements IOpenWeatherMapService {
+
+	@Override
+	public Double getTemperatureByPincode(Temperature temperature) throws OpenWeatherMapCustomException {
+		return null;
+	}
+
+}

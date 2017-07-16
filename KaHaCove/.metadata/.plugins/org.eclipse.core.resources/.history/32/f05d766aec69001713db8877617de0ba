@@ -1,0 +1,12 @@
+/**
+ * 
+ */
+package com.clovewearable.cove.model;
+
+/**
+ * @author SONY
+ *
+ */
+public class Temperature {
+
+}

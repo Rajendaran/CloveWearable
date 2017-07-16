@@ -1,0 +1,13 @@
+package com.clovewearable.cove.util;
+
+import org.springframework.stereotype.Service;
+
+/**
+ * @author Rajendaran
+ *
+ */
+
+@Service
+public class OpenWeatherMapUtil {
+
+}

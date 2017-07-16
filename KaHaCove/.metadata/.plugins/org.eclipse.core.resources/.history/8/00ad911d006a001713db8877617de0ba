@@ -1,0 +1,53 @@
+package com.clovewearable.cove.util;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+import org.slf4j.LoggerFactory;
+
+import com.clovewearable.cove.constants.ICoveConstant;
+import com.clovewearable.cove.model.TimeDifference;
+
+/**
+ * @author Rajendaran
+ *
+ */
+public class CalculateTimeDifferenceUtil {
+	
+	private static final org.slf4j.Logger logger = LoggerFactory.getLogger(CalculateTimeDifferenceUtil.class);
+
+	/**
+	 * @param date1
+	 * @param date2
+	 * @return TimeDifference
+	 */
+	public TimeDifference calculateTimeDifference(Date date1, Date date2) {
+		String dateStart = "11/03/14 09:29:58";
+	    String dateStop = "11/03/14 09:33:43";
+
+	    Date tempDate1 = null;
+	    Date tempDate2 = null;
+	    try {
+	    	tempDate1 = ICoveConstant.SIMPLE_DATE_FORMAT.parse(dateStart);
+	    	tempDate2 = ICoveConstant.SIMPLE_DATE_FORMAT.parse(dateStop);
+	    } catch (ParseException e) {
+	        logger.error(e.getMessage());
+	    }
+
+	    long diff = d2.getTime() - d1.getTime();
+	    long diffSeconds = diff / 1000 % 60;
+	    long diffMinutes = diff / (60 * 1000) % 60;
+	    long diffHours = diff / (60 * 60 * 1000);
+	    int diffInDays = (int) diff / (1000 * 60 * 60 * 24);
+	    System.out.println("Time in seconds: " + diffSeconds + " seconds.");
+	    System.out.println("Time in minutes: " + diffMinutes + " minutes.");
+	    System.out.println("Time in hours: " + diffHours + " hours.");
+	    System.out.println("Time in days: " + diffInDays + " days.");
+
+	}
+
+		return null;
+		
+	}
+}

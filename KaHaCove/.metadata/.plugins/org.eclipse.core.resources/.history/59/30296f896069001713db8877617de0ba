@@ -1,0 +1,30 @@
+package com.clovewearable.cove.constants;
+
+/**
+ * @author Rajendaran
+ *
+ */
+public interface ICoveConstant {
+	
+	//HQL Queries
+	public static final String USER_EXIST_CHECK_QUERY = "FROM User as user WHERE user.email = ?";
+	public static final String USER_LOGIN_QUERY = "FROM User as user WHERE user.id = ?";
+	
+	//Error or common messages
+	public static final String USER_REGISTRATION_SUCCESS = "User created successfully";
+	public static final String USER_ALREADY_EXIST = "User alrady exist";
+	public static final String USER_FOUND = "User Found";
+	public static final String USER_DOES_NOT_FOUND = "User does not found";
+	
+	//Openweathermap config
+	public static final String OPENWEATHERMAP_API_KEY = "0f07c97f5189997dc05bdb3cfedb25f3";
+	
+	//Method start or end message
+	public static final String BEGINS_USER_DAO_CREATEUSER_METHOD = "----------Begins UserDao => createUser method----------";
+	public static final String BEGINS_USER_DAO_LOGINUSER_METHOD = "----------Begins UserDao => loginUser method----------";
+	public static final String BEGINS_USER_SERVICE_CREATEUSER_METHOD = "----------Begins UserService => createUser method----------";
+	public static final String BEGINS_USER_SERVICE_LOGINUSER_METHOD = "----------Begins UserService => loginUser method----------";
+	public static final String BEGINS_USER_CONTROLLER_CREATEUSER_METHOD = "----------Begins UserController => createUser method----------";
+	public static final String BEGINS_USER_CONTROLLER_LOGINUSER_METHOD = "----------Begins UserController => loginUser method----------";
+
+}

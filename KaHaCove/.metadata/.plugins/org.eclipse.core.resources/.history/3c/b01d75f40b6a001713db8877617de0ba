@@ -1,0 +1,73 @@
+package com.clovewearable.cove.dao.impl;
+
+import java.util.Date;
+import java.util.List;
+
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.transaction.Transactional;
+
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
+import com.clovewearable.cove.constants.ICoveConstant;
+import com.clovewearable.cove.dao.IOpenWeatherMapDao;
+import com.clovewearable.cove.exception.OpenWeatherMapCustomException;
+import com.clovewearable.cove.model.Temperature;
+import com.clovewearable.cove.model.TimeDifference;
+import com.clovewearable.cove.util.CalculateTimeDifferenceUtil;
+
+/**
+ * @author Rajendaran
+ *
+ */
+
+@Transactional
+@Repository
+public class OpenWeatherMapDao implements IOpenWeatherMapDao {
+	
+	@PersistenceContext	
+	private EntityManager entityManager;
+	
+	@Autowired
+	private CalculateTimeDifferenceUtil calculateTimeDifferenceUtil;
+	
+	private static final org.slf4j.Logger logger = LoggerFactory.getLogger(OpenWeatherMapDao.class);
+
+	@SuppressWarnings({ "unchecked", "unused" })
+	@Override
+	public Double getTemperatureByPincode(Temperature temperature) throws OpenWeatherMapCustomException {
+		logger.info(ICoveConstant.BEGINS_OWM_DAO_GETTEMPBYPINCODE_METHOD);
+		String tempHql = ICoveConstant.GET_TEMP_QUERY;
+		List<Temperature> temperatureList = entityManager.createQuery(tempHql).setParameter(1, temperature.getPincode()).getResultList();
+		logger.info(ICoveConstant.TEMPERATURE_LIST_SIZE + temperatureList.size());
+		Double currentTemp = null;
+		if(0 == temperatureList.size()) {
+			System.out.println("STEP 1.....");
+			entityManager.merge(temperature);
+			currentTemp = temperature.getCurrentTemp();
+		} else {
+			for (Temperature temp : temperatureList) {
+				TimeDifference timeDifference = calculateTimeDifferenceUtil.calculateTimeDifference(temp.getUpdatedAt(), new Date());
+				if(0 == timeDifference.getHours() && 0 == timeDifference.getMinutes() && 30 < timeDifference.getSeconds()) {
+					System.out.println("STEP 2.....");
+					currentTemp = temp.getCurrentTemp();
+				} else {
+					System.out.println("STEP 3.....");
+					Temperature updateTemp = entityManager.find(Temperature.class, temperature.getPincode());
+					updateTemp.setCurrentTemp(temperature.getCurrentTemp());
+					entityManager.flush();
+					currentTemp = temperature.getCurrentTemp();
+				}
+				System.out.println("DiffSec   : "+ timeDifference.getSeconds());
+				System.out.println("DiffMins   : "+ timeDifference.getMinutes());
+				System.out.println("DiffHrs  : "+ timeDifference.getHours());
+			}
+		}
+		
+		System.out.print(currentTemp);
+		return currentTemp;
+	}
+
+}

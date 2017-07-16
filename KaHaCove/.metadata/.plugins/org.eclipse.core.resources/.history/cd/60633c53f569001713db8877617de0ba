@@ -1,0 +1,32 @@
+package com.clovewearable.cove.service.impl;
+
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.clovewearable.cove.constants.ICoveConstant;
+import com.clovewearable.cove.dao.impl.OpenWeatherMapDao;
+import com.clovewearable.cove.exception.OpenWeatherMapCustomException;
+import com.clovewearable.cove.model.Temperature;
+import com.clovewearable.cove.service.IOpenWeatherMapService;
+
+/**
+ * @author Rajendaran
+ *
+ */
+
+@Service
+public class OpenWeatherMapService implements IOpenWeatherMapService {
+	
+	private static final org.slf4j.Logger logger = LoggerFactory.getLogger(OpenWeatherMapService.class);
+	
+	@Autowired
+	OpenWeatherMapDao openWeatherMapDao;
+
+	@Override
+	public Double getTemperatureByPincode(Temperature temperature) throws OpenWeatherMapCustomException {
+		logger.info(ICoveConstant.BEGINS_OWM_SERVICE_GETTEMPBYPINCODE_METHOD);
+		return null;
+	}
+
+}

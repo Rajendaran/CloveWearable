@@ -1,0 +1,9 @@
+package com.clovewearable.cove.model;
+
+/**
+ * @author Rajendaran
+ *
+ */
+public class TimeDifference {
+
+}

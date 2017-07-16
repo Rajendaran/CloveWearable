@@ -1,0 +1,18 @@
+package com.clovewearable.cove.dao.impl;
+
+import com.clovewearable.cove.dao.IOpenWeatherMapDao;
+import com.clovewearable.cove.exception.OpenWeatherMapCustomException;
+
+/**
+ * @author Rajendaran
+ *
+ */
+public class OpenWeatherMapDao implements IOpenWeatherMapDao {
+
+	@Override
+	public Double saveTemperatureByZipCode() throws OpenWeatherMapCustomException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

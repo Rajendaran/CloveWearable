@@ -1,5 +1,7 @@
 package com.clovewearable.cove.model;
 
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -20,7 +22,7 @@ public class User {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Integer id;
 	
-	@Column(name="user_name")
+	@Column(name="name")
 	private String name;
 	
 	@Column(name="email")
@@ -28,6 +30,12 @@ public class User {
 	
 	@Column(name="pincode")
 	private String pincode;
+	
+	@Column(name="created_at")
+	private Date createdAt;
+	
+	@Column(name="updated_at")
+	private Date updatedAt;
 
 	public String getName() {
 		return name;

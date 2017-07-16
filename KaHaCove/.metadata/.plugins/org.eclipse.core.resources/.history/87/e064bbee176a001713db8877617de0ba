@@ -1,0 +1,53 @@
+package com.clovewearable.cove.constants;
+
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+
+/**
+ * @author Rajendaran
+ *
+ */
+public interface ICoveConstant {
+	
+	//HQL Queries
+	public static final String USER_EXIST_CHECK_QUERY = "FROM User as user WHERE user.email = ?";
+	public static final String USER_LOGIN_QUERY = "FROM User as user WHERE user.id = ?";
+	public static final String GET_TEMP_QUERY = "FROM Temperature as temp WHERE temp.pincode = ?";
+	public static final String GET_ALL_TEMP_QUERY = "FROM Temperature";
+	
+	//Error or common messages
+	public static final String USER_REGISTRATION_SUCCESS = "User created successfully";
+	public static final String USER_ALREADY_EXIST = "User alrady exist";
+	public static final String USER_FOUND = "User Found";
+	public static final String USER_DOES_NOT_FOUND = "User does not found";
+	public static final String ERROR_WHILE_GETTING_OWM_DATA = "Error while getting the OpenWeatherMap data";
+	public static final String ERROR_WHILE_PARSING_JSON_DATA = "Error while parsing the json data";
+	public static final String CURRENT_TEMP = "Current temperature is : ";
+	public static final String OWM_CURRENT_TEMP = "OWM current temperature is : ";
+	public static final String TEMPERATURE_LIST_SIZE = "Temperature list size : ";
+	public static final String TEMPERATURE_SAVED_SUCCESSFULLY = "Temperature has saved successfully";
+	public static final String TEMPERATURE_LESS_THAN_30_SECONDS = "Temperature of less than 30 seconds";
+	public static final String TEMPERATURE_UPDATED_SUCCESSFULLY = "Temperature has updated successfully";
+	
+	//Openweathermap config
+	public static final String OPENWEATHERMAP_API_KEY = "0f07c97f5189997dc05bdb3cfedb25f3";
+	public static final String OPENWEATHERMAP_API_KEY1 = "&APPID=0f07c97f5189997dc05bdb3cfedb25f3";
+	public static final String OPENWEATHERMAP_URL_BY_PINCODE = "http://api.openweathermap.org/data/2.5/weather?zip=";
+	
+	public static final DateFormat SIMPLE_DATE_FORMAT = new SimpleDateFormat("yyyyMMddHHmmss");
+	
+	//Method start or end message
+	public static final String BEGINS_USER_DAO_CREATEUSER_METHOD = "----------Begins UserDao => createUser method----------";
+	public static final String BEGINS_USER_DAO_LOGINUSER_METHOD = "----------Begins UserDao => loginUser method----------";
+	public static final String BEGINS_USER_SERVICE_CREATEUSER_METHOD = "----------Begins UserService => createUser method----------";
+	public static final String BEGINS_USER_SERVICE_LOGINUSER_METHOD = "----------Begins UserService => loginUser method----------";
+	public static final String BEGINS_USER_CONTROLLER_CREATEUSER_METHOD = "----------Begins UserController => createUser method----------";
+	public static final String BEGINS_USER_CONTROLLER_LOGINUSER_METHOD = "----------Begins UserController => loginUser method----------";
+	public static final String BEGINS_OWM_DAO_GETTEMPBYPINCODE_METHOD = "----------Begins OpenWeatherMapDao => getTemperatureByPincode method----------";
+	public static final String BEGINS_OWM_SERVICE_GETTEMPBYPINCODE_METHOD = "----------Begins OpenWeatherMapService => getTemperatureByPincode method----------";
+	public static final String BEGINS_OWM_CONTROLLER_GETTEMPBYPINCODE_METHOD = "----------Begins OpenWeatherMapController => getTemperatureByPincode method----------";
+	public static final String BEGINS_OWM_DAO_UPDATETEMP_EVERY_MINUTE_METHOD = "----------Begins OpenWeatherMapDao => updateTemperatureByEveryMinute method----------";
+	public static final String BEGINS_OWM_SERVICE_UPDATETEMP_EVERY_MINUTE_METHOD = "----------Begins OpenWeatherMapService => updateTemperatureByEveryMinute method----------";
+	public static final String BEGINS_OWM_CONTROLLER_UPDATETEMP_EVERY_MINUTE_METHOD = "----------Begins OpenWeatherMapService => updateTemperatureByEveryMinute method----------";
+
+}

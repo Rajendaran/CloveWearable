@@ -1,0 +1,37 @@
+package com.clovewearable.cove.schduler;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Scheduled;
+
+import com.clovewearable.cove.constants.ICoveConstant;
+import com.clovewearable.cove.exception.OpenWeatherMapCustomException;
+import com.clovewearable.cove.model.Temperature;
+import com.clovewearable.cove.service.impl.OpenWeatherMapService;
+
+/**
+ * @author Rajendaran
+ *
+ */
+public class OpenWeatherMapScheduler {
+	
+	@Autowired
+	OpenWeatherMapService openWeatherMapService;
+
+	/**
+	 * @throws OpenWeatherMapCustomException
+	 */
+	@Scheduled(fixedRate=5000)
+	public void updateTemperatureByEveryMinute() throws OpenWeatherMapCustomException {
+		logger.info(ICoveConstant.BEGINS_OWM_CONTROLLER_UPDATETEMP_EVERY_MINUTE_METHOD);
+		List<Temperature> temperatureList = openWeatherMapService.getAllTemperature();
+		logger.info(ICoveConstant.TEMPERATURE_LIST_SIZE + temperatureList.size());
+		for (Temperature temp : temperatureList) {
+			Temperature temperature = openWeatherMapService.getCurrentTemperature(temp.getPincode(), temp.getCountry());
+			openWeatherMapService.updateTemperatureByEveryMinute(temperature);
+		}
+		
+	}
+
+}

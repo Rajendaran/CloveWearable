@@ -1,0 +1,16 @@
+package com.clovewearable.cove.util;
+
+import java.util.Date;
+
+import com.clovewearable.cove.model.TimeDifference;
+
+/**
+ * @author Rajendaran
+ *
+ */
+public class CalculateTimeDifferenceUtil {
+
+	public TimeDifference calculateTimeDifference(Date date1, Date date2) {
+		
+	}
+}

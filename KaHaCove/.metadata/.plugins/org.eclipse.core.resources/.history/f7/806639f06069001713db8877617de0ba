@@ -1,0 +1,29 @@
+package com.clovewearable.cove.controller;
+
+import org.slf4j.LoggerFactory;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import com.clovewearable.cove.constants.ICoveConstant;
+import com.clovewearable.cove.exception.UserCustomException;
+import com.clovewearable.cove.model.User;
+
+/**
+ * @author Rajendaran
+ *
+ */
+public class OpenWeatherMapController {
+	
+	private static final org.slf4j.Logger logger = LoggerFactory.getLogger(UserController.class);
+	
+	@RequestMapping(value = "/getWeatherByZipCode")
+	public ResponseEntity<String> getWeatherByZipCode(@RequestParam("zipCode") String zipCode, @RequestParam("country") String country) {
+		//logger.info(ICoveConstant.BEGINS_USER_CONTROLLER_CREATEUSER_METHOD);
+		http://api.openweathermap.org/data/2.5/weather?zip=94040,us&APPID=0f07c97f5189997dc05bdb3cfedb25f3
+		return null;
+	}
+
+}

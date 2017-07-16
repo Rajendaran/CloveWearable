@@ -1,0 +1,41 @@
+package com.clovewearable.cove;
+
+import java.io.IOException;
+
+import org.json.JSONException;
+
+import net.aksingh.owmjapis.CurrentWeather;
+import net.aksingh.owmjapis.DailyForecast;
+import net.aksingh.owmjapis.OpenWeatherMap;
+
+public class OpenWheather {
+
+	public static void main(String[] args) {
+		boolean isMetric = true;
+	    String owmApiKey = "0f07c97f5189997dc05bdb3cfedb25f3"; /* YOUR OWM API KEY HERE */
+	    String weatherCity = "Brisbane,AU";
+	    byte forecastDays = 3;
+	    OpenWeatherMap.Units units = (isMetric)
+	        ? OpenWeatherMap.Units.METRIC
+	        : OpenWeatherMap.Units.IMPERIAL;
+	    OpenWeatherMap owm = new OpenWeatherMap(units, owmApiKey);
+	    try {
+	      CurrentWeather cw = owm.currentWeatherByCityName(Chennai);
+	     System.out.print(cw.getCityName());
+	      /*System.out.println("Weather for: " + forecast.getCityInstance().getCityName());
+	      int numForecasts = forecast.getForecastCount();
+	      for (int i = 0; i < numForecasts; i++) {
+	        DailyForecast.Forecast dayForecast = forecast.getForecastInstance(i);
+	        DailyForecast.Forecast.Temperature temperature = dayForecast.getTemperatureInstance();
+	        System.out.println("\t" + dayForecast.getDateTime());
+	        System.out.println("\tTemperature: " + temperature.getMinimumTemperature() +
+	            " to " + temperature.getMaximumTemperature() + "\n");
+	      }*/
+	    }
+	    catch (JSONException e) {
+	      e.printStackTrace();
+	    }
+
+	}
+
+}

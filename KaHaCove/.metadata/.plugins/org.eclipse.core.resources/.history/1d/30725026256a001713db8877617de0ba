@@ -1,0 +1,9 @@
+package com.clovewearable.cove.schduler;
+
+/**
+ * @author Rajendaran
+ *
+ */
+public class OpenWeatherMapScheduler {
+
+}
